@@ -7,118 +7,67 @@ using namespace std;
 class Employee {
 private:
     string organization;    // Место работы
-    int age;        // возраст
-    float grade;    // рейтинг
+    string position;        // Должность
+    double experience;      // Стаж
+    string full_name;       // ФИО
+    string sex;             // Пол
+    int age;                // Возраст
+    double salary;          // Заработная плата
+    static int count;       // Колво сотрудников
 
 public:
-    string GetName() { // получение имени
-        return this->name;
+    Employee() {
+        count++;
     }
 
-    int GetAge() { // получение возраста
-        return this->age;
+    ~Employee() {
+        count--;
     }
 
-    float GetGrade() { // получение рейтинга
-        return this->grade;
+    string GetOrg() { // получение информации о месте работы
+        return organization;
     }
 
-    void SetName(string name) { // установка имени
-        this->name = name;
+    string GetPos() { // получение занимаемой должности
+        return position;
     }
 
-    void SetAge(int age) { // установка возраста
-        this->age = age;
+    double GetExp() { // получение стаже работы
+        return experience;
     }
 
-    void SetGrade(float grade) { // установка рейтинга
-        this->grade = grade;
+    double GetSal() { // получение заработной платы
+        return salary;
     }
 
-    void Set(string name, int age, float grade) { // установка всех трех полей
-        this->name = name;
-        this->age = age;
-        this->grade = grade;
+    void SetPos(string pos) {// изменение должности
+        position = pos;
     }
 
-    void Show() { // отображение информации о студенте
-        cout << "Имя: " << this->name << ", Возраст: " << this->age << ", Рейтинг: " << this->grade << "\n";
+    void SetSal(double sal) {// начисление заработной платы
+        salary = sal;
     }
+
+    void PrintInfo() { // вывод личных данных
+        cout << "Место работы: " << organization << endl
+                << " Должность: " << position << endl
+                << " Стаж: " << experience << endl
+                << " ФИО: " << full_name << endl
+                << " Пол: " << sex << endl
+                << " Возраст: " << age << endl
+                << " Заработная плата: " << salary << endl;
+    }
+
+    bool operator==(const Employee& lhs) // операции сравнения объектов, присваивание (перегрузка операций)
+    {
+        return lhs.position == position;
+    }
+
+    static int GetCount() {
+        return count;
+    }
+
 };
 
-void test_SetName_and_GetName() {
-    Student student;
-    string name = "Иван";
-
-    student.SetName(name);
-    if (student.GetName() == name) {
-        cout << "test_SetName_and_GetName пройден\n";
-    } else {
-        cout << "test_SetName_and_GetName не пройден\n";
-        exit(-1);
-    }
-}
-
-void test_SetAge_and_GetAge() {
-    Student student;
-    int age = 20;
-    student.SetAge(age);
-
-    if (student.GetAge() == age) {
-        cout << "test_SetAge_and_GetAge пройден\n";
-    } else {
-        cout << "test_SetAge_and_GetAge не пройден\n";
-        exit(-1);
-    }
-}
-
-void test_SetGrade_and_GetGrade() {
-    Student student;
-    float grade = 4.5;
-    student.SetGrade(grade);
-
-    if (student.GetGrade() == grade) {
-        cout << "test_SetGrade_and_GetGrade пройден\n";
-    } else {
-        cout << "test_SetGrade_and_GetGrade не пройден\n";
-        exit(-1);
-    }
-}
-
-int main() {
-    test_SetName_and_GetName();
-    test_SetAge_and_GetAge();
-    test_SetGrade_and_GetGrade();
-
-    int numStudents;
-    cout << "Введите количество студентов: ";
-    cin >> numStudents;
-
-    vector<Student> students(numStudents);
-
-    for (int i = 0; i < numStudents; i++) {
-        string name;
-        int age;
-        float grade;
-
-        cout << "\nВведите имя студента " << i + 1 << ": ";
-        cin >> name;
-        students[i].SetName(name);
-
-        cout << "\nВведите возраст студента " << i + 1 << ": ";
-        cin >> age;
-        students[i].SetAge(age);
-
-        cout << "\nВведите рейтинг студента " << i + 1 << ": ";
-        cin >> grade;
-        students[i].SetGrade(grade);
-    }
-
-    cout << "Информация о студентах:\n";
-    for (int i = 0; i < numStudents; i++) {
-        students[i].Show();
-    }
-
-    return 0;
 }
 
