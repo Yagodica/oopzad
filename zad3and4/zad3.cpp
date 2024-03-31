@@ -81,6 +81,7 @@ int Employee::count = 0;
 
 
 int main() {
+
     Employee *obj1 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
     Employee *obj2 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
 
