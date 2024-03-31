@@ -16,7 +16,8 @@ private:
     static int count;       // Колво сотрудников
 
 public:
-    Employee() {
+    Employee(string org, string pos, double exp, string name, string s, int a, double sal)
+            : organization(org), position(pos), experience(exp), full_name(name), sex(s), age(a), salary(sal) {
         count++;
     }
 
@@ -58,10 +59,17 @@ public:
                 << " Заработная плата: " << salary << endl;
     }
 
-    bool operator==(const Employee& lhs) // операции сравнения объектов, присваивание (перегрузка операций)
+//    bool operator==(const Employee& other) // операции сравнения объектов, присваивание (перегрузка операций)
+//    {
+//        return this->organization == other.organization;
+//    }
+
+
+    bool operator==(const Employee& other)
     {
-        return lhs.position == position;
+        return organization == other.organization;
     }
+
 
     static int GetCount() {
         return count;
@@ -69,5 +77,19 @@ public:
 
 };
 
+int Employee::count = 0;
+
+
+int main() {
+    Employee *obj1 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
+    Employee *obj2 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
+
+
+    cout << (*obj1 == *obj2) << endl;
+
+
+    delete obj1;
+    delete obj2;
+    return 0;
 }
 
