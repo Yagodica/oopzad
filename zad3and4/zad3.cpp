@@ -25,19 +25,19 @@ public:
         count--;
     }
 
-    string GetOrg() { // получение информации о месте работы
+    string GetOrg() const { // получение информации о месте работы
         return organization;
     }
 
-    string GetPos() { // получение занимаемой должности
+    string GetPos() const { // получение занимаемой должности
         return position;
     }
 
-    double GetExp() { // получение стаже работы
+    double GetExp() const { // получение стаже работы
         return experience;
     }
 
-    double GetSal() { // получение заработной платы
+    double GetSal() const { // получение заработной платы
         return salary;
     }
 
@@ -50,7 +50,7 @@ public:
     }
 
     void PrintInfo() { // вывод личных данных
-        cout << "Место работы: " << organization << endl
+        cout << "\nМесто работы: " << organization << endl
                 << " Должность: " << position << endl
                 << " Стаж: " << experience << endl
                 << " ФИО: " << full_name << endl
@@ -58,11 +58,6 @@ public:
                 << " Возраст: " << age << endl
                 << " Заработная плата: " << salary << endl;
     }
-
-//    bool operator==(const Employee& other) // операции сравнения объектов, присваивание (перегрузка операций)
-//    {
-//        return this->organization == other.organization;
-//    }
 
 
     bool operator==(const Employee& other)
@@ -81,16 +76,28 @@ int Employee::count = 0;
 
 
 int main() {
+    const int Emp_Count = 3;
 
-    Employee *obj1 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
-    Employee *obj2 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
+    auto *obj_array = new Employee [Emp_Count] {
+            Employee("мпт", "сис админ", 1, "Иван", "муж", 20, 100000),
+            Employee("рэу", "техподдержка", 2, "Даня", "муж", 23, 60000),
+            Employee("Пятерочка", "касир", 1, "Настя", "жен", 20, 30000),
+    };
 
+    for (int i = 0; i < Emp_Count; ++i) {
+        obj_array[i].PrintInfo();
+    }
 
-    cout << (*obj1 == *obj2) << endl;
+    cout << "Количество сотрудников: " << Employee::GetCount() << endl;
 
+    //  Изменение должности, заработной платы
 
-    delete obj1;
-    delete obj2;
+    obj_array[0].SetPos("Магнит");
+    obj_array[0].SetSal(50000);
+
+    cout << endl << obj_array[0].GetPos() << endl;
+    cout << obj_array[0].GetSal() << endl;
+
+    delete[] obj_array;
     return 0;
 }
-
