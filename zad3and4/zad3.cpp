@@ -16,14 +16,8 @@ private:
     static int count;       // Колво сотрудников
 
 public:
-    Employee() {
-        organization = "1";    // Место работы
-        position = "1";        // Должность
-        experience = 1;      // Стаж
-        full_name = "1";       // ФИО
-        sex = "1";             // Пол
-        age = 1;                // Возраст
-        salary = 1;          // Заработная плата
+    Employee(string org, string pos, double exp, string name, string s, int a, double sal)
+            : organization(org), position(pos), experience(exp), full_name(name), sex(s), age(a), salary(sal) {
         count++;
     }
 
@@ -65,15 +59,17 @@ public:
                 << " Заработная плата: " << salary << endl;
     }
 
-    bool operator==(const Employee& other) const {
-        return organization == other.organization &&
-               position == other.position &&
-               experience == other.experience &&
-               full_name == other.full_name &&
-               sex == other.sex &&
-               age == other.age &&
-               salary == other.salary;
+//    bool operator==(const Employee& other) // операции сравнения объектов, присваивание (перегрузка операций)
+//    {
+//        return this->organization == other.organization;
+//    }
+
+
+    bool operator==(const Employee& other)
+    {
+        return organization == other.organization;
     }
+
 
     static int GetCount() {
         return count;
@@ -83,16 +79,17 @@ public:
 
 int Employee::count = 0;
 
+
 int main() {
-    Employee *obj1 = new Employee();
-    Employee *obj2 = new Employee();
+    Employee *obj1 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
+    Employee *obj2 = new Employee("Test org1", "Test pos", 2, "Test name", "male", 20, 100000);
 
-    if (obj1 == obj2) {
-        cout << "Объекты emp1 и emp2 равны." << endl;
-    } else {
-        cout << "Объекты emp1 и emp2 не равны." << endl;
-    }
 
+    cout << (*obj1 == *obj2) << endl;
+
+
+    delete obj1;
+    delete obj2;
     return 0;
 }
 
