@@ -17,6 +17,13 @@ private:
 
 public:
     Employee() {
+        organization = "1";    // Место работы
+        position = "1";        // Должность
+        experience = 1;      // Стаж
+        full_name = "1";       // ФИО
+        sex = "1";             // Пол
+        age = 1;                // Возраст
+        salary = 1;          // Заработная плата
         count++;
     }
 
@@ -58,9 +65,14 @@ public:
                 << " Заработная плата: " << salary << endl;
     }
 
-    bool operator==(const Employee& lhs) // операции сравнения объектов, присваивание (перегрузка операций)
-    {
-        return lhs.position == position;
+    bool operator==(const Employee& other) const {
+        return organization == other.organization &&
+               position == other.position &&
+               experience == other.experience &&
+               full_name == other.full_name &&
+               sex == other.sex &&
+               age == other.age &&
+               salary == other.salary;
     }
 
     static int GetCount() {
@@ -69,5 +81,18 @@ public:
 
 };
 
+int Employee::count = 0;
+
+int main() {
+    Employee *obj1 = new Employee();
+    Employee *obj2 = new Employee();
+
+    if (obj1 == obj2) {
+        cout << "Объекты emp1 и emp2 равны." << endl;
+    } else {
+        cout << "Объекты emp1 и emp2 не равны." << endl;
+    }
+
+    return 0;
 }
 
