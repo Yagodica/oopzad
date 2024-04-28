@@ -6,7 +6,10 @@ project(oopzad VERSION 1.0
 
 
 
-set(SOURCES zad5and6/src/Canvas.cpp zad5and6/zad5.cpp zad5and6/include/Canvas.h)
+set(SOURCES
+        zad7and8/book.cpp
+)
+
 
 add_executable(my_exe ${SOURCES})
 
