@@ -8,6 +8,10 @@ project(oopzad VERSION 1.0
 
 set(SOURCES
         zad7and8/book.cpp
+        zad7and8/book.h
+        zad7and8/main.cpp
+        zad7and8/catalog_book.cpp
+        zad7and8/catalog_book.h
 )
 
 
