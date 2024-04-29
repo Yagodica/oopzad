@@ -26,6 +26,7 @@ unsigned int CatalogBook::count = 0;
 
 
 int main() {
+
     vector<CatalogBook> catalog; // Вектор для хранения книг-каталогов
 
 
