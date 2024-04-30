@@ -1,5 +1,7 @@
 #include "catalog_book.h"
 
+// SOSS
+
 using namespace std;
 
 // Функция печати информации о книге
