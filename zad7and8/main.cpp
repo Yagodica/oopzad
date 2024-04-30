@@ -1,6 +1,5 @@
 #include "catalog_book.h"
 
-// SOSS
 
 using namespace std;
 
@@ -64,7 +63,7 @@ int main() {
 
                 cout << "\nВведите авторов книги (через пробел): ";
 
-                while (cin >> author) {
+                while (getline(cin, author)) {
                     if (author == "exit") {
                         break;
                     }
