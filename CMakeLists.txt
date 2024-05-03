@@ -7,7 +7,7 @@ project(oopzad VERSION 1.0
 
 
 set(SOURCES
-        zad9and10/main.cpp
+        zad11and12/main.cpp
 )
 
 
